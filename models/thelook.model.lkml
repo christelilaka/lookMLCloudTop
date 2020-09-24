@@ -57,3 +57,7 @@ explore: orders {
 explore: products {}
 
 explore: users {}
+
+explore: persons {
+  from: users
+}
