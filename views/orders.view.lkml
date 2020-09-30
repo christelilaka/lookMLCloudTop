@@ -122,6 +122,7 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [created_week, count]
+    html: <p></p> ;;
   }
 
 }

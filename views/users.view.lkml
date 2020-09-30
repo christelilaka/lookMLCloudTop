@@ -68,6 +68,12 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: custom_image {
+    type: string
+    sql: "Looker" ;;
+    html: <img src="https://us-central1-christel-dcl.cloudfunctions.net/imageSearch?q={{value}}"> ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
