@@ -7,8 +7,16 @@ include: "/views/**/*.view"
 datagroup: thelook_default_datagroup {
   max_cache_age: "1 hour"
 }
+
+datagroup: pdt_dates {
+  max_cache_age: "240 hours"
+  sql_trigger: SELECT 1 ;;
+  description: "Used in 1_dates_pdt view file"
+}
+
 persist_with: thelook_default_datagroup
 
+explore: 1_dates_pdt {}
 
 explore: inventory_items {
   join: products {
