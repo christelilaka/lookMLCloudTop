@@ -107,9 +107,53 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+  filter: select_the_date {
+    type: date
+  }
+
+  dimension: is_date_in_range {
+    type: yesno
+    sql: {% condition select_the_date %} ${created_date} {% endcondition %} ;;
+  }
+
+  dimension: is_date_start {
+    type: yesno
+    sql: ${created_date} >= {% date_start select_the_date %} ;;
+  }
+
+  dimension: is_date_end {
+    type: yesno
+    sql: ${created_date} < {% date_end select_the_date %} ;;
+  }
+
+  dimension: is_year {
+    value_format: "0"
+    type: number
+    sql: YEAR(${created_date});;
+  }
+
+  dimension: is_years_test {
+    type: yesno
+    sql: {% condition is_year %} ${is_year} {% endcondition %} ;;
+  }
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+  }
+
+  dimension: is_order_complete {
+    type: yesno
+    sql: ${status} = "Complete" ;;
+  }
+
+  measure: total_order {
+    type: count
+
+    link: {
+      label: "Test Link Local"
+      url: "@{instanceURL}x/l5QFvwM2oxbMkY17TSHS0Q"
+    }
   }
 
   dimension: user_id {
