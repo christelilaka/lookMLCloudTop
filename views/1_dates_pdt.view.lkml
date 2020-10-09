@@ -25,6 +25,7 @@ view: 1_dates_pdt {
   }
 
   dimension: first_name {
+    label: "First Name"
     type: string
   }
 
