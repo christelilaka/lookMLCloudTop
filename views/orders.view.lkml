@@ -82,6 +82,7 @@ view: orders {
   #---------------------------------------- DIMENSIONS ---------------------------------------
 
   dimension: id {
+    label: "Id"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
